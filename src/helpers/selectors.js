@@ -20,3 +20,16 @@ export function getInterview(state, interview) {
 
   return interviewOut;
 }
+
+export function getInterviewersForDay(state, day) {
+  const dayInterviewers = [];
+  const dayIntvIds =
+    state.days.find((el) => el.name === day)?.interviewers || undefined;
+
+  dayIntvIds &&
+    dayIntvIds.forEach((id) => {
+      dayInterviewers.push(state.interviewers[id]);
+    });
+
+  return dayInterviewers;
+}
