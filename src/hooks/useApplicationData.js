@@ -1,15 +1,36 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useReducer } from "react";
 import axios from "axios";
 
+const SET_DAY = "SET_DAY";
+const SET_APPLICATION_DATA = "SET_APPLICATION_DATA";
+const SET_INTERVIEW = "SET_INTERVIEW";
+
+function reducer(state, action) {
+  const { day, days, interviewers, appointments } = { ...action };
+
+  switch (action.type) {
+    case SET_DAY:
+      return { ...state, day };
+    case SET_APPLICATION_DATA:
+      return { ...state, days, interviewers, appointments };
+    case SET_INTERVIEW:
+      return { ...state, days, appointments };
+    default:
+      throw new Error(
+        `Tried to reduce with unsupported action type: ${action.type}`
+      );
+  }
+}
+
 const useApplicationData = function () {
-  const [state, setState] = useState({
+  const [state, dispatch] = useReducer(reducer, {
     days: [],
     day: "Monday",
     appointments: {},
     interviewers: {},
   });
 
-  const setDay = (day) => setState((prev) => ({ ...prev, day }));
+  const setDay = (day) => dispatch({ type: SET_DAY, day });
 
   useEffect(() => {
     Promise.all([
@@ -17,12 +38,12 @@ const useApplicationData = function () {
       axios.get("/api/appointments"),
       axios.get("/api/interviewers"),
     ]).then(([daysRes, appointmentsRes, interviewersRes]) =>
-      setState((prev) => ({
-        ...prev,
+      dispatch({
+        type: SET_APPLICATION_DATA,
         days: daysRes.data,
         appointments: appointmentsRes.data,
         interviewers: interviewersRes.data,
-      }))
+      })
     );
   }, []);
 
@@ -40,7 +61,7 @@ const useApplicationData = function () {
     return axios.put(`/api/appointments/${id}`, { interview }).then((res) => {
       const days = updateSpotsRemaining(state, id, appointments);
 
-      setState((prev) => ({ ...prev, appointments, days }));
+      dispatch({ type: SET_INTERVIEW, days, appointments });
     });
   }
 
@@ -58,7 +79,7 @@ const useApplicationData = function () {
     return axios.delete(`/api/appointments/${apptId}`).then((res) => {
       const days = updateSpotsRemaining(state, apptId, appointments);
 
-      setState((prev) => ({ ...prev, appointments, days }));
+      dispatch({ type: SET_INTERVIEW, days, appointments });
     });
   };
 
