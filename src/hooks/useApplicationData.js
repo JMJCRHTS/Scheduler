@@ -89,13 +89,15 @@ const useApplicationData = function () {
   }, []);
 
   const setInterview = function (id, interview = null) {
-    return axios({
-      method: interview ? "put" : "delete",
-      url: `/api/appointments/${id}`,
-      data: { interview },
-    }).then((res) => {
-      dispatch({ type: SET_INTERVIEW, id, interview });
-    });
+    if (interview) {
+      return axios.put(`/api/appointments/${id}`, { interview }).then((res) => {
+        dispatch({ type: SET_INTERVIEW, id, interview });
+      });
+    } else {
+      return axios.delete(`/api/appointments/${id}`).then((res) => {
+        dispatch({ type: SET_INTERVIEW, id, interview });
+      });
+    }
   };
 
   return {
