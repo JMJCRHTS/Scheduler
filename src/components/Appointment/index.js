@@ -19,6 +19,8 @@ const EDIT = "EDIT";
 const ERROR_SAVE = "ERROR_SAVE";
 const ERROR_DELETE = "ERROR_DELETE";
 
+// Renders all the appointment components for a single day
+
 export default function Appointment(props) {
   const { time, interviewers, id, bookInterview, cancelInterview } = props;
   const { interview } = props || {};
@@ -34,6 +36,8 @@ export default function Appointment(props) {
     }
   }, [interview, transition, mode]);
 
+// save component 
+
   const save = function (name, interviewer) {
     const interview = {
       student: name,
@@ -45,6 +49,8 @@ export default function Appointment(props) {
       .then(() => transition(SHOW))
       .catch((error) => transition(ERROR_SAVE, true));
   };
+
+// delete component
 
   const deleteAppt = function () {
     transition(DELETING, true);

@@ -1,5 +1,7 @@
 import React from "react";
 
+// shows booked appointment component
+
 export default function Show(props) {
   const { student, interviewer, onEdit, onDelete } = props;
   const { name: intName } = interviewer || {};

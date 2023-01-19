@@ -1,6 +1,8 @@
 import React from "react";
 import Button from "components/Button";
 
+// confirm component that renders a message and two buttons
+
 export default function Confirm(props) {
   const { message, onCancel, onConfirm } = props;
 

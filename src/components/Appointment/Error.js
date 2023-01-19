@@ -1,5 +1,7 @@
 import React from "react";
 
+// error component that renders an error message
+
 export default function Error(props) {
   const { message, onClose } = props;
 

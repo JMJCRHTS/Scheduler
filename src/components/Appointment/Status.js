@@ -1,5 +1,7 @@
 import React from "react";
 
+// show component for booked appointment status (loading, saving, deleting, etc.)
+
 export default function Status(props) {
   return (
     <main className="appointment__card appointment__card--status">

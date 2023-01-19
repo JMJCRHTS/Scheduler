@@ -5,6 +5,8 @@ const SET_DAY = "SET_DAY";
 const SET_APPLICATION_DATA = "SET_APPLICATION_DATA";
 const SET_INTERVIEW = "SET_INTERVIEW";
 
+// Helper function to update the spots remaining for a given day
+
 const updateSpotsRemaining = function (state, id, appointments) {
   const days = [...state.days];
   const dayIndex = days.findIndex((day) => day.appointments.includes(id));
@@ -18,6 +20,8 @@ const updateSpotsRemaining = function (state, id, appointments) {
 
   return days;
 };
+
+// Reducer function to update state
 
 const reducer = function (state, action) {
   const { day, days, interviewers, appointments, id, interview } = {
@@ -47,6 +51,8 @@ const reducer = function (state, action) {
       );
   }
 };
+
+// Custom hook to manage application state
 
 const useApplicationData = function () {
   const [state, dispatch] = useReducer(reducer, {
@@ -87,6 +93,8 @@ const useApplicationData = function () {
 
     return () => webSocket.close();
   }, []);
+
+// Helper function to book or cancel an interview
 
   const setInterview = function (id, interview = null) {
     if (interview) {

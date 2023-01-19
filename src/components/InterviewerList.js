@@ -3,6 +3,8 @@ import "./InterviewerList.scss";
 import InterviewerListItem from "./InterviewerListItem";
 import PropTypes from "prop-types";
 
+// interviewer list component that renders the list of available interviewers
+
 export default function InterviewerList(props) {
   const { interviewers, onChange, value } = props;
 

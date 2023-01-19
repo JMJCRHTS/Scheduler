@@ -9,6 +9,8 @@ import {
 } from "helpers/selectors";
 import useApplicationData from "hooks/useApplicationData";
 
+// Application component that renders the entire application
+
 export default function Application() {
   const { state, setDay, bookInterview, cancelInterview } =
     useApplicationData();

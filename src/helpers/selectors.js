@@ -1,3 +1,5 @@
+// returns an array of appointments for that day (empty if no appointments)
+
 export function getAppointmentsForDay(state, day) {
   const dayAppointments = [];
   const dayApptIds =
@@ -11,6 +13,8 @@ export function getAppointmentsForDay(state, day) {
   return dayAppointments;
 }
 
+// returns an object with the interview data (null if no interview)
+
 export function getInterview(state, interview) {
   const interviewOut = interview ? { ...interview } : null;
 
@@ -20,6 +24,8 @@ export function getInterview(state, interview) {
 
   return interviewOut;
 }
+
+// returns an array of interviewers for that day (empty if no interviewers)
 
 export function getInterviewersForDay(state, day) {
   const dayInterviewers = [];

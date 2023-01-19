@@ -1,5 +1,7 @@
 import React from "react";
 
+// empty component that renders the empty state of the appointment
+
 export default function Empty(props) {
   const { onAdd } = props;
 
