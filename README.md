@@ -1,6 +1,6 @@
 # Interview Scheduler
 
-Interview scheduler is a single page application built with React that allows users to book and cancel interviews. We combine a concise API with a WebSocket server to build a realtime experience. This project utilizes React, Jest, Cypress, Storybook and WebSockets to deploy a production build.
+Interview scheduler is a single page application built with React that allows users to book and cancel interviews. We combine a concise API with a WebSocket server to build a realtime experience. This project utilizes a combination of React, Jest, Cypress, Storybook, WebSockets, Webpack, Babel and Axios to deploy the build.
 
 ## App Interface
 
