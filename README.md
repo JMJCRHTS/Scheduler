@@ -41,9 +41,9 @@ npm run storybook
 ```
 
 ## Dependencies
-- axios: ^0.20.0
-- classnames: ^2.2.6
-- normalize.css: ^8.0.1
-- react: ^16.9.0
-- react-dom: ^16.9.0
-- react-scripts: 3.4.4
+- axios
+- classnames
+- normalize.css
+- react
+- react-dom
+- react-scripts
